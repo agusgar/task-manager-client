@@ -1,30 +1,25 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import Home from './components/Home';
+import {  BrowserRouter as Router, Route } from 'react-router-dom';
+import './App.scss';
 
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
-        </div>
-      </MuiThemeProvider>
+      <Router>
+        <MuiThemeProvider>
+          <div className="App">
+            <header className="App-header">
+              <Header />
+            </header>
+            <div className="App-body">
+              <Route exact path="/" component={Home} />
+            </div>
+          </div>
+        </MuiThemeProvider>
+      </Router>
     );
   }
 }
