@@ -5,22 +5,33 @@ import TextField from '@material-ui/core/TextField';
 import './index.scss';
 
 function TaskAdd({ onAdd }) {
-  const [taskName, setTaskName] = useState('');
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onAdd({ name: taskName });
-    setTaskName('');
+    onAdd({ name, description });
+    setName('');
+    setDescription('');
   };
 
   return(
     <div className="task-add">
       <form onSubmit={handleSubmit}>
         <TextField
+          name="name"
           fullWidth
           label="Task name"
-          onChange={(event) => setTaskName(event.target.value)}
-          value={taskName}
+          onChange={(event) => setName(event.target.value)}
+          value={name}
+        />
+        <TextField
+          name="description"
+          fullWidth
+          multiline
+          label="Description"
+          onChange={(event) => setDescription(event.target.value)}
+          value={description}
         />
       </form>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 
-import { getTasks, addTask } from '../../redux/actions';
+import { getTasks, addTask, removeTask } from '../../redux/actions';
 import { connect } from 'react-redux';
 import TaskAdd from '../TaskAdd';
 import TaskList from '../TaskList';
@@ -13,12 +13,12 @@ class Home extends React.Component {
   }
 
   render() {
-    const { addTask, tasks, loading } = this.props;
+    const { tasks, loading, addTask, removeTask } = this.props;
 
     return (
       <div className="home">
         <TaskAdd onAdd={addTask}/>
-        {!loading && <TaskList tasks={tasks} />}
+        {!loading && <TaskList tasks={tasks} onRemove={removeTask} />}
       </div>
     );
   }
@@ -37,6 +37,9 @@ const mapDispatchToProps = dispatch => ({
   },
   addTask(task) {
     return dispatch(addTask(task));
+  },
+  removeTask(task) {
+    return dispatch(removeTask(task));
   }
 });
 

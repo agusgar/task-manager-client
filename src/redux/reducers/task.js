@@ -4,6 +4,7 @@ import { get } from 'lodash';
 import {
   ADD_TASK_FULFILLED, ADD_TASK_REJECTED,
   GET_TASKS_FULFILLED, GET_TASKS_PENDING, GET_TASKS_REJECTED,
+  REMOVE_TASK_FULFILLED, REMOVE_TASK_REJECTED,
 } from '../types';
 
 export default handleActions(
@@ -27,6 +28,15 @@ export default handleActions(
       list: [...state.list, get(action, 'payload.data')],
     }),
     [ADD_TASK_REJECTED]: (state, action) => ({
+      ...state,
+      error: true,
+    }),
+
+    [REMOVE_TASK_FULFILLED]: (state, action) => ({
+      ...state,
+      list: state.list.filter(({ task }) => task.id !== get(action, 'payload.data.task.id')),
+    }),
+    [REMOVE_TASK_REJECTED]: (state, action) => ({
       ...state,
       error: true,
     }),

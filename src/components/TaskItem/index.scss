@@ -1,19 +1,23 @@
 .task-item {
   width: 100%;
+  border-top: 1px solid #e0e0e0;
+  cursor: pointer;
 
   .task-item-body {
-    padding: 40px;
+    padding: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .task-item-icon {
       width: 40px;
+      padding: 0 20px;
     }
 
     .task-item-content {
       display: flex;
       flex-direction: column;
+      padding: 0 20px;
 
       .task-item-name {
         font-size: 36px;
@@ -24,9 +28,9 @@
       }
     }
 
-
     .task-item-badge {
-      width: 80px
+      width: 80px;
+      padding: 0 20px;
     }
   }
 }
