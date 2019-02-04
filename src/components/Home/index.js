@@ -1,8 +1,10 @@
 import React from 'react';
 import './index.scss';
 
-import { getTasks } from '../../redux/actions';
+import { getTasks, addTask } from '../../redux/actions';
 import { connect } from 'react-redux';
+import TaskAdd from '../TaskAdd';
+import TaskList from '../TaskList';
 
 class Home extends React.Component {
   componentDidMount() {
@@ -11,9 +13,12 @@ class Home extends React.Component {
   }
 
   render() {
+    const { addTask, tasks, loading } = this.props;
+
     return (
       <div className="home">
-        This is home
+        <TaskAdd onAdd={addTask}/>
+        {!loading && <TaskList tasks={tasks} />}
       </div>
     );
   }
@@ -30,6 +35,9 @@ const mapDispatchToProps = dispatch => ({
   getTasks() {
     return dispatch(getTasks());
   },
+  addTask(task) {
+    return dispatch(addTask(task));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,0 +1,32 @@
+.task-item {
+  width: 100%;
+
+  .task-item-body {
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .task-item-icon {
+      width: 40px;
+    }
+
+    .task-item-content {
+      display: flex;
+      flex-direction: column;
+
+      .task-item-name {
+        font-size: 36px;
+      }
+
+      .task-item-description {
+        font-size: 18px;
+      }
+    }
+
+
+    .task-item-badge {
+      width: 80px
+    }
+  }
+}
